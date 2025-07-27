@@ -43,7 +43,7 @@ Route::middleware(['auth', 'verified','rolemanager:admin'])->group(function () {
 
       Route::controller(productcontroller::class)->group(function(){
           Route::get('/product/manage','index')->name('product.manage');
-          Route::get('/product/review/manage','review-manage')->name('product.review.manage');
+          Route::get('/product/review/manage','review_manage')->name('product.review.manage');
       
       });
       
