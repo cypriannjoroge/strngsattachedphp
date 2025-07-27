@@ -1,7 +1,7 @@
 @extends('vendor.layouts.layout')
 @section('vendor_page_title')
-Dashboard Vendor panel    
+Manage product    
 @endsection
 @section('vendor_layout')
-<h3>Vendor dashboard</h3>
+<h3>Manage product</h3>
 @endsection
