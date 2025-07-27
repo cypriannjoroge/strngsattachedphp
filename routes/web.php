@@ -22,7 +22,7 @@ Route::middleware(['auth', 'verified','rolemanager:admin'])->group(function () {
   Route::prefix('admin')->group(function(){
       Route::controller(adminmaincontroller::class)->group(function(){
           Route::get('/dashboard','index')->name('admin');
-          Route::get('/settings','setting')->name('admin.settings');
+          Route::get('/settings','settings')->name('admin.settings');
           Route::get('/manage/users','manage_user')->name('admin.manage.user');
           Route::get('/manage/stores','manage_stores')->name('admin.manage.store');
           Route::get('/cart/history','cart_history')->name('admin.cart.history');
