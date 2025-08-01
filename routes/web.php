@@ -7,6 +7,7 @@ use App\Http\Controllers\admin\productcontroller;
 use App\Http\Controllers\admin\productdiscountattributecontroller;
 use App\Http\Controllers\admin\subcategorycontroller;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\user\usermaincontroller;
 use App\Http\Controllers\vendor\storecontroller;
 use App\Http\Controllers\vendor\vendormaincontroller;
 use App\Http\Controllers\vendor\vendorproductcontroller;
@@ -17,9 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified','rolemanager:user'])->name('dashboard');
+
 
 //admin routes
 Route::middleware(['auth', 'verified','rolemanager:admin'])->group(function () {
@@ -70,7 +69,7 @@ Route::middleware(['auth', 'verified','rolemanager:admin'])->group(function () {
 Route::middleware(['auth', 'verified','rolemanager:vendor'])->group(function () {
    Route::prefix('vendor')->group(function () {
     Route::controller(vendormaincontroller::class)->group(function () {
-      Route::get('/dashboard','index')->name('vendor');
+      Route::get('/dashboard','index')->name('vendor.');
       Route::get('/order/history','orderhistory')->name('vendor.order.history');
 
       });
@@ -88,23 +87,21 @@ Route::middleware(['auth', 'verified','rolemanager:vendor'])->group(function () 
 });
 
 
-
-
-
-
-
 //user routes
 Route::middleware(['auth', 'verified','rolemanager:user'])->group(function () {
-  Route::controller(adminmaincontroller::class)->group(function () {
-    Route::prefix('user')->group(function () {
-      Route::get('/dashboard','index')->name('user');
+   Route::prefix('user')->group(function () {
+    Route::controller(usermaincontroller::class)->group(function () {
+      Route::get('/dashboard','index')->name('dashboard');
+      Route::get('/order/history','history')->name('user.history');
+      Route::get('/setting/payment','payment')->name('user.payment');
+      Route::get('/affiliate','affiliate')->name('user.affiliate');
+     
+
       });
-   });
+    });
 });
 
-Route::get('/vendor/dashboard', function () {
-    return view('vendor');
-})->middleware(['auth', 'verified','rolemanager:vendor'])->name('vendor');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
