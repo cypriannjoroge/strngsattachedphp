@@ -35,7 +35,7 @@
 
 					<li class="sidebar-item {{request()->routeIs('admin')?'active':''}}">
 						<a class="sidebar-link" href="{{route('admin')}}">
-              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+              <i class="align-middle" data-feather="home"></i> <span class="align-middle">Dashboard</span>
             </a>
 					</li>
 
@@ -46,12 +46,12 @@
 
 					<li class="sidebar-item {{request()->routeIs('category.create')?'active':''}}">
 						<a class="sidebar-link" href="{{route('category.create')}}">
-              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">create</span>
+              <i class="align-middle" data-feather="plus"></i> <span class="align-middle">create</span>
             </a>
 					</li>
 					<li class="sidebar-item {{request()->routeIs('category.manage')?'active':''}}">
 						<a class="sidebar-link" href="{{route('category.manage')}}">
-              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">manage</span>
+              <i class="align-middle" data-feather="settings"></i> <span class="align-middle">manage</span>
             </a>
 					</li>
 
@@ -62,12 +62,12 @@
 
 					<li class="sidebar-item {{request()->routeIs('subcategory.create')?'active':''}}">
 						<a class="sidebar-link" href="{{route('subcategory.create')}}">
-              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">create</span>
+              <i class="align-middle" data-feather="plus"></i> <span class="align-middle">create</span>
             </a>
 					</li>
 					<li class="sidebar-item {{request()->routeIs('subcategory.manage')?'active':''}}">
 						<a class="sidebar-link" href="{{route('subcategory.manage')}}">
-              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">manage</span>
+              <i class="align-middle" data-feather="settings"></i> <span class="align-middle">manage</span>
             </a>
 					</li>	
 				
@@ -160,86 +160,7 @@
             </a>
 					</li>
 
-					{{-- <li class="sidebar-item">
-						<a class="sidebar-link" href="pages-sign-in.html">
-              <i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Sign In</span>
-            </a>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="pages-sign-up.html">
-              <i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Sign Up</span>
-            </a>
-					</li>
-
-					<li class="sidebar-item active">
-						<a class="sidebar-link" href="pages-blank.html">
-              <i class="align-middle" data-feather="book"></i> <span class="align-middle">Blank</span>
-            </a>
-					</li>
-
-					<li class="sidebar-header">
-						Tools & Components
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="ui-buttons.html">
-              <i class="align-middle" data-feather="square"></i> <span class="align-middle">Buttons</span>
-            </a>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="ui-forms.html">
-              <i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Forms</span>
-            </a>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="ui-cards.html">
-              <i class="align-middle" data-feather="grid"></i> <span class="align-middle">Cards</span>
-            </a>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="ui-typography.html">
-              <i class="align-middle" data-feather="align-left"></i> <span class="align-middle">Typography</span>
-            </a>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="icons-feather.html">
-              <i class="align-middle" data-feather="coffee"></i> <span class="align-middle">Icons</span>
-            </a>
-					</li>
-
-					<li class="sidebar-header">
-						Plugins & Addons
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="charts-chartjs.html">
-              <i class="align-middle" data-feather="bar-chart-2"></i> <span class="align-middle">Charts</span>
-            </a>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="maps-google.html">
-              <i class="align-middle" data-feather="map"></i> <span class="align-middle">Maps</span>
-            </a>
-					</li>
-				</ul> --}}
-
-				{{-- <div class="sidebar-cta">
-					<div class="sidebar-cta-content">
-						<strong class="d-inline-block mb-2">Upgrade to Pro</strong>
-						<div class="mb-3 text-sm">
-							Are you looking for more components? Check out our premium version.
-						</div>
-						<div class="d-grid">
-							<a href="upgrade-to-pro.html" class="btn btn-primary">Upgrade to Pro</a>
-						</div>
-					</div>
-				</div> --}}
+					
 			</div>
 		</nav>
 
@@ -408,9 +329,7 @@
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Blank Page</h1>
-
-					@yeild('adminlayout')
+					@yield('admin_layout')
 
 				</div>
 			</main>
@@ -420,22 +339,22 @@
 					<div class="row text-muted">
 						<div class="col-6 text-start">
 							<p class="mb-0">
-								<a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>AdminKit</strong></a> - <a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>Bootstrap Admin Template</strong></a>								&copy;
+								<a class="text-muted" href="https://github.com/cypriannjoroge" target="_blank"><strong>NjoroDev</strong></a> - <a class="text-muted" href="https://github.com/cypriannjoroge" target="_blank"><strong></strong></a>								&copy;
 							</p>
 						</div>
 						<div class="col-6 text-end">
 							<ul class="list-inline">
 								<li class="list-inline-item">
-									<a class="text-muted" href="https://adminkit.io/" target="_blank">Support</a>
+									<a class="text-muted" href="https://github.com/cypriannjoroge" target="_blank">Support</a>
 								</li>
 								<li class="list-inline-item">
-									<a class="text-muted" href="https://adminkit.io/" target="_blank">Help Center</a>
+									<a class="text-muted" href="https://github.com/cypriannjoroge" target="_blank">Help Center</a>
 								</li>
 								<li class="list-inline-item">
-									<a class="text-muted" href="https://adminkit.io/" target="_blank">Privacy</a>
+									<a class="text-muted" href="https://github.com/cypriannjoroge" target="_blank">Privacy</a>
 								</li>
 								<li class="list-inline-item">
-									<a class="text-muted" href="https://adminkit.io/" target="_blank">Terms</a>
+									<a class="text-muted" href="https://github.com/cypriannjoroge" target="_blank">Terms</a>
 								</li>
 							</ul>
 						</div>

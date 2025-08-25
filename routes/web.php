@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\productattributecontroller;
 use App\Http\Controllers\admin\productcontroller;
 use App\Http\Controllers\admin\productdiscountattributecontroller;
 use App\Http\Controllers\admin\subcategorycontroller;
+use App\Http\Controllers\mastercategorycontroller;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\user\usermaincontroller;
 use App\Http\Controllers\vendor\storecontroller;
@@ -61,6 +62,11 @@ Route::middleware(['auth', 'verified','rolemanager:admin'])->group(function () {
           Route::get('/discount/manage','manage')->name('discount.manage');
       
       });
+
+      Route::controller(mastercategorycontroller::class)->group(function(){
+          Route::get('/store/category','storecat')->name('store.cat');
+      
+      });
   });
 });
 
@@ -91,7 +97,7 @@ Route::middleware(['auth', 'verified','rolemanager:vendor'])->group(function () 
 Route::middleware(['auth', 'verified','rolemanager:user'])->group(function () {
    Route::prefix('user')->group(function () {
     Route::controller(usermaincontroller::class)->group(function () {
-      Route::get('/dashboard','index')->name('dashboard');
+      Route::get('/dashboard','index')->name('user');
       Route::get('/order/history','history')->name('user.history');
       Route::get('/setting/payment','payment')->name('user.payment');
       Route::get('/affiliate','affiliate')->name('user.affiliate');
