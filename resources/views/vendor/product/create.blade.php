@@ -3,5 +3,5 @@
 Create product    
 @endsection
 @section('vendor_layout')
-<h3>Create product</h3>
+  <livewire:category-subcategory/>
 @endsection

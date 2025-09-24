@@ -1,11 +1,11 @@
 @extends('admin.layouts.layout')
 @section('admin_page_title')
-Create category
+Edit category
 @endsection
 @section('admin_layout')
     <div class="card">
 		<div class="card-header">
-			<h5 class="card-title mb-0">CREATE CATEGORY</h5>
+			<h5 class="card-title mb-0">EDIT CATEGORY</h5>
 		</div>
 		<div class="card-body">
             @if ($errors->any())
@@ -18,16 +18,17 @@ Create category
                 </div>
             @endif  
 
-        @if(session('success'))
+        @if(session('message'))
             <div class="alert alert-success">
-              {{session('success')}}    
+              {{session('message')}}    
             </div>        
         @endif
-            <form action="{{route('store.cat')}}" method="POST">
+            <form action="{{route('update.cat', $category_info->id)}}" method="POST">
                 @csrf
+                @method('PUT')
                <label for="category_name"  class="fw-bold mb-2">Name your category</label>
-               <input type="text" name="category_name" class="form-control" placeholder="Type of cloth">
-                <button type="submit" class="btn btn-primary w-100 mt-2">Add category</button>
+               <input type="text" name="category_name" value="{{$category_info->category_name}}">
+                <button type="submit" class="btn btn-primary w-100 mt-2">update category</button>
 
             </form>
 		</div>

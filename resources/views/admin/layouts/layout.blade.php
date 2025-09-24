@@ -18,6 +18,7 @@
 
 	<link href="{{asset('admin_asset/css/app.css')}}" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 
 <body>
@@ -70,7 +71,22 @@
               <i class="align-middle" data-feather="settings"></i> <span class="align-middle">manage</span>
             </a>
 					</li>	
-				
+				<ul class="sidebar-nav">
+					<li class="sidebar-header">
+						product attribute
+					</li>
+
+					<li class="sidebar-item {{request()->routeIs('productattribute.create')?'active':''}}">
+						<a class="sidebar-link" href="{{route('productattribute.create')}}">
+              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">create</span>
+            </a>
+					</li>
+					<li class="sidebar-item {{request()->routeIs('productattribute.manage')?'active':''}}">
+						<a class="sidebar-link" href="{{route('productattribute.manage')}}">
+              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">manage</span>
+            </a>
+					</li>
+					
 				<ul class="sidebar-nav">
 					<li class="sidebar-header">
 						Product
@@ -87,21 +103,7 @@
             </a>
 					</li>	
 
-				<ul class="sidebar-nav">
-					<li class="sidebar-header">
-						product attribute
-					</li>
-
-					<li class="sidebar-item {{request()->routeIs('productattribute.create')?'active':''}}">
-						<a class="sidebar-link" href="{{route('productattribute.create')}}">
-              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">create</span>
-            </a>
-					</li>
-					<li class="sidebar-item {{request()->routeIs('productattribute.manage')?'active':''}}">
-						<a class="sidebar-link" href="{{route('productattribute.manage')}}">
-              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">manage</span>
-            </a>
-					</li>
+				
 					
 				<ul class="sidebar-nav">
 					<li class="sidebar-header">
@@ -310,7 +312,7 @@
               </a>
 
 							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-                <img src="img/avatars/avatar.jpg" class="avatar img-fluid rounded me-1" alt="Charles Hall" /> <span class="text-dark">Charles Hall</span>
+                <img src="img/avatars/avatar.jpg" class="avatar img-fluid rounded me-1" alt="Valentine" /> <span class="text-dark">Valentine</span>
               </a>
 							<div class="dropdown-menu dropdown-menu-end">
 								<a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
@@ -319,7 +321,10 @@
 								<a class="dropdown-item" href="index.html"><i class="align-middle me-1" data-feather="settings"></i> Settings & Privacy</a>
 								<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i> Help Center</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#">Log out</a>
+								<form method="POST" action="{{ route('logout') }}">
+									@csrf
+									<button type="submit" class="dropdown-item"><i class="align-middle me-1" data-feather="log-out"></i> Log out</button>
+								</form>
 							</div>
 						</li>
 					</ul>
@@ -339,23 +344,21 @@
 					<div class="row text-muted">
 						<div class="col-6 text-start">
 							<p class="mb-0">
-								<a class="text-muted" href="https://github.com/cypriannjoroge" target="_blank"><strong>NjoroDev</strong></a> - <a class="text-muted" href="https://github.com/cypriannjoroge" target="_blank"><strong></strong></a>								&copy;
+								<a class="text-muted" href="https://cypverse.netlify.app/" target="_blank"><strong>NjoroDev</strong></a> - <a class="text-muted" href="https://cypverse.netlify.app/" target="_blank"><strong>Copyright</strong></a>								&copy;
 							</p>
 						</div>
 						<div class="col-6 text-end">
 							<ul class="list-inline">
 								<li class="list-inline-item">
-									<a class="text-muted" href="https://github.com/cypriannjoroge" target="_blank">Support</a>
+									<a class="text-muted" href="https://cypverse.netlify.app/" target="_blank">Support</a>
 								</li>
 								<li class="list-inline-item">
-									<a class="text-muted" href="https://github.com/cypriannjoroge" target="_blank">Help Center</a>
+									<a class="text-muted" href="https://cypverse.netlify.app/" target="_blank">Help Center</a>
 								</li>
 								<li class="list-inline-item">
-									<a class="text-muted" href="https://github.com/cypriannjoroge" target="_blank">Privacy</a>
+									<a class="text-muted" href="https://cypverse.netlify.app/" target="_blank">Privacy</a>
 								</li>
-								<li class="list-inline-item">
-									<a class="text-muted" href="https://github.com/cypriannjoroge" target="_blank">Terms</a>
-								</li>
+								
 							</ul>
 						</div>
 					</div>

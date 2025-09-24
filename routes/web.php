@@ -7,6 +7,7 @@ use App\Http\Controllers\admin\productcontroller;
 use App\Http\Controllers\admin\productdiscountattributecontroller;
 use App\Http\Controllers\admin\subcategorycontroller;
 use App\Http\Controllers\mastercategorycontroller;
+use App\Http\Controllers\Mastersubcategorycontroller;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\user\usermaincontroller;
 use App\Http\Controllers\vendor\storecontroller;
@@ -54,6 +55,10 @@ Route::middleware(['auth', 'verified','rolemanager:admin'])->group(function () {
       Route::controller(productattributecontroller::class)->group(function(){
           Route::get('/productattribute/create','index')->name('productattribute.create');
           Route::get('/productattribute/manage','manage')->name('productattribute.manage');
+          Route::post('/defaultattribute/create','createattribute')->name('attribute.create');
+          Route::get('/defaultattribute/{id}','showattribute')->name('show.attribute');
+          Route::put('/defaultattribute/update/{id}','updateattribute')->name('update.attribute');
+          Route::delete('/defaultattribute/delete/{id}','deleteattribute')->name('delete.attribute');
       
       });
 
@@ -64,9 +69,18 @@ Route::middleware(['auth', 'verified','rolemanager:admin'])->group(function () {
       });
 
       Route::controller(mastercategorycontroller::class)->group(function(){
-          Route::get('/store/category','storecat')->name('store.cat');
-      
+          Route::post('/store/category','storecat')->name('store.cat');
+          Route::get('/category/{id}','showcat')->name('show.cat');
+          Route::put('/category/update/{id}','updatecat')->name('update.cat');
+          Route::delete('/category/delete/{id}','deletecat')->name('delete.cat');
       });
+
+      Route::controller(Mastersubcategorycontroller::class)->group(function(){
+        Route::post('/store/subcategory','storesubcat')->name('store.subcat');
+        Route::get('/subcategory/{id}','showsubcat')->name('show.subcat');
+        Route::put('/subcategory/update/{id}','updatesubcat')->name('update.subcat');
+        Route::delete('/subcategory/delete/{id}','deletesubcat')->name('delete.subcat');
+    });
   });
 });
 
@@ -75,15 +89,18 @@ Route::middleware(['auth', 'verified','rolemanager:admin'])->group(function () {
 Route::middleware(['auth', 'verified','rolemanager:vendor'])->group(function () {
    Route::prefix('vendor')->group(function () {
     Route::controller(vendormaincontroller::class)->group(function () {
-      Route::get('/dashboard','index')->name('vendor.');
+      Route::get('/dashboard','index')->name('vendor.dashboard');
       Route::get('/order/history','orderhistory')->name('vendor.order.history');
 
       });
     Route::controller(vendorstorecontroller::class)->group(function () {
       Route::get('/store/create','index')->name('vendor.store');
       Route::get('/store/manage','manage')->name('vendor.store.manage');
-
+      Route::post('/store/publish','store')->name('create.store');
+      Route::put('/store/update/{id}','updatestore')->name('update.store');
+      Route::delete('/store/delete/{id}','deletestore')->name('delete.store');
       });
+      
     Route::controller(vendorproductcontroller::class)->group(function () {
       Route::get('/product/create','index')->name('vendor.product');
       Route::get('/product/manage','manage')->name('vendor.product.manage');
@@ -97,7 +114,7 @@ Route::middleware(['auth', 'verified','rolemanager:vendor'])->group(function () 
 Route::middleware(['auth', 'verified','rolemanager:user'])->group(function () {
    Route::prefix('user')->group(function () {
     Route::controller(usermaincontroller::class)->group(function () {
-      Route::get('/dashboard','index')->name('user');
+      Route::get('/dashboard','index')->name('user.dashboard');
       Route::get('/order/history','history')->name('user.history');
       Route::get('/setting/payment','payment')->name('user.payment');
       Route::get('/affiliate','affiliate')->name('user.affiliate');

@@ -18,6 +18,10 @@
 
 	<link href="{{asset('admin_asset/css/app.css')}}" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	 
+	@livewireStyles
 </head>
 
 <body>
@@ -34,7 +38,7 @@
 					</li>
 
 					<li class="sidebar-item {{request()->routeIs('vendor')?'active':''}}">
-						<a class="sidebar-link" href="{{route('vendor')}}">
+						<a class="sidebar-link" href="{{route('vendor.dashboard')}}">
               <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
             </a>
 					</li>
@@ -314,7 +318,10 @@
 								<a class="dropdown-item" href="index.html"><i class="align-middle me-1" data-feather="settings"></i> Settings & Privacy</a>
 								<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i> Help Center</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#">Log out</a>
+								<form method="POST" action="{{ route('logout') }}">
+									@csrf
+									<button type="submit" class="dropdown-item"><i class="align-middle me-1" data-feather="log-out"></i> Log out</button>
+								</form>
 							</div>
 						</li>
 					</ul>
@@ -324,9 +331,9 @@
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Blank Page</h1>
+					<h1 class="h3 mb-3"></h1>
 
-					@yeild('vendorlayout')
+					@yield('vendor_layout')
 
 				</div>
 			</main>
@@ -336,23 +343,18 @@
 					<div class="row text-muted">
 						<div class="col-6 text-start">
 							<p class="mb-0">
-								<a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>AdminKit</strong></a> - <a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>Bootstrap Admin Template</strong></a>								&copy;
+								<a class="text-muted" href="https://cypverse.netlify.app/" target="_blank"><strong>DevNjoro</strong></a> - <a class="text-muted" href="https://cypverse.netlify.app/" target="_blank"><strong>Copyright</strong></a>								&copy;
 							</p>
 						</div>
 						<div class="col-6 text-end">
 							<ul class="list-inline">
 								<li class="list-inline-item">
-									<a class="text-muted" href="https://adminkit.io/" target="_blank">Support</a>
+									<a class="text-muted" href="https://cypverse.netlify.app/" target="_blank">Support</a>
 								</li>
 								<li class="list-inline-item">
-									<a class="text-muted" href="https://adminkit.io/" target="_blank">Help Center</a>
+									<a class="text-muted" href="https://cypverse.netlify.app/" target="_blank">Help Center</a>
 								</li>
-								<li class="list-inline-item">
-									<a class="text-muted" href="https://adminkit.io/" target="_blank">Privacy</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="text-muted" href="https://adminkit.io/" target="_blank">Terms</a>
-								</li>
+								
 							</ul>
 						</div>
 					</div>
@@ -362,7 +364,8 @@
 	</div>
 
 	<script src="{{asset('admin_asset/js/app.js')}}"></script>
-
+    
+	@livewireScripts
 </body>
 
 </html>
