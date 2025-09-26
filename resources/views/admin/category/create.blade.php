@@ -3,6 +3,8 @@
 Create category
 @endsection
 @section('admin_layout')
+  <div class="row">
+    <div class="col-12">
     <div class="card">
 		<div class="card-header">
 			<h5 class="card-title mb-0">CREATE CATEGORY</h5>
@@ -32,5 +34,6 @@ Create category
             </form>
 		</div>
 	</div>
-
+    </div>
+  </div>
 @endsection

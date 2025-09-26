@@ -1,24 +1,27 @@
 <?php
 
-use App\Http\Controllers\admin\adminmaincontroller;
-use App\Http\Controllers\admin\categorycontroller;
-use App\Http\Controllers\admin\productattributecontroller;
-use App\Http\Controllers\admin\productcontroller;
-use App\Http\Controllers\admin\productdiscountattributecontroller;
-use App\Http\Controllers\admin\subcategorycontroller;
-use App\Http\Controllers\mastercategorycontroller;
-use App\Http\Controllers\Mastersubcategorycontroller;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\user\usermaincontroller;
-use App\Http\Controllers\vendor\storecontroller;
-use App\Http\Controllers\vendor\vendormaincontroller;
-use App\Http\Controllers\vendor\vendorproductcontroller;
-use App\Http\Controllers\vendor\vendorstorecontroller;
+use App\Livewire\HomepageComponent;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\admin\productcontroller;
+use App\Http\Controllers\user\usermaincontroller;
+use App\Http\Controllers\admin\categorycontroller;
+use App\Http\Controllers\mastercategorycontroller;
+use App\Http\Controllers\admin\adminmaincontroller;
+use App\Http\Controllers\admin\subcategorycontroller;
+use App\Http\Controllers\Mastersubcategorycontroller;
+use App\Http\Controllers\vendor\vendormaincontroller;
+use App\Http\Controllers\vendor\vendorstorecontroller;
+use App\Http\Controllers\vendor\vendorproductcontroller;
+use App\Http\Controllers\admin\productattributecontroller;
+use App\Http\Controllers\admin\productdiscountattributecontroller;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', HomepageComponent::class)->name('homepage');
+
+// Flash Sale / Products Page
+Route::get('/products', function () {
+    return view('products.index'); // resources/views/products/index.blade.php
+})->name('products.index');
 
 
 
@@ -104,7 +107,8 @@ Route::middleware(['auth', 'verified','rolemanager:vendor'])->group(function () 
     Route::controller(vendorproductcontroller::class)->group(function () {
       Route::get('/product/create','index')->name('vendor.product');
       Route::get('/product/manage','manage')->name('vendor.product.manage');
-
+      Route::post('/product/store','storeproduct')->name('vendor.product.store');
+      Route::delete('/product/delete/{id}','deleteproduct')->name('vendor.delete.product');
       });    
    });
 });
